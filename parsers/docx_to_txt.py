@@ -18,10 +18,10 @@ def convert_docx_to_txt(docx_file, txt_file):
         print(f"Ошибка: {e}")
 
 
-# Путь к вашему .docx файлу
-docx_file_path = "your_file.docx"
+# АБСОЛЮТНЫЙ Путь к вашему .docx файлу
+docx_file_path = "/workspaces/python-2/parsers/parsers/data/base_dogs.docx"
 
-# Путь для сохранения .txt файла
+# АБСОЛЮТНЫЙ Путь для сохранения .txt файла
 txt_file_path = "output_file.txt"
 
 # Преобразование
