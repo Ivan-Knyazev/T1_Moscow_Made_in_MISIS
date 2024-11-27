@@ -8,8 +8,8 @@ class CommonPhrases(BaseModel):
 
 
 class KnowledgeBase(BaseModel):
-    url: str
-    prompt: str
+    url: str | None
+    prompt: str | None
     neural_network_model: str
 
 

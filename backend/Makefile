@@ -2,6 +2,10 @@
 db:
 	docker compose up -d postgres
 
+.PHONY: adminer
+adminer:
+	docker compose up -d adminer
+
 .PHONY: build
 build:
 	docker compose up -d --build

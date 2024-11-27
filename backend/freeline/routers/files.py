@@ -18,14 +18,28 @@ def is_allowed_db_file(filename: str | None) -> bool:
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_DB_EXTENSIONS
 
 
-@file_router.post("/upload/db", description="Использовать для загрузки Базы Знаний")
+def get_file_type(filename: str) -> str:
+    for type in ALLOWED_DB_EXTENSIONS:
+        if '.' in filename and filename.rsplit('.', 1)[1].lower() == type:
+            return type
+    else:
+        return ""
+
+
+@file_router.post("/upload", description="Использовать для загрузки Базы Знаний файлом")
 async def upload_file(user_id: str, file: UploadFile):
     # Проверка типа файла
     if not is_allowed_db_file(file.filename):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="Unsupported file type")
 
-    await put_file_to_s3(bucket_name=user_id, file=file)
+    if file.filename is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Unsupported file type")
+    else:
+        file_type = get_file_type(filename=file.filename)
+
+    await put_file_to_s3(bucket_name=user_id, file=file, file_type=file_type)
 
     return {"message": f"Successfully uploaded {file.filename}"}
 

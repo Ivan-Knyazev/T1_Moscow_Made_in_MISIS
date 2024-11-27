@@ -6,6 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from freeline.routers.test import test_router
 from freeline.routers.files import file_router
 from freeline.routers.chat_bot import bot_router
+from freeline.routers.notion import notion_router
+from freeline.routers.chat import chat_router
 # from . import db, routers, config
 
 
@@ -29,8 +31,10 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    _app.include_router(test_router)
+    # _app.include_router(test_router)
     _app.include_router(file_router)
+    _app.include_router(notion_router)
     _app.include_router(bot_router)
+    _app.include_router(chat_router)
 
     return _app

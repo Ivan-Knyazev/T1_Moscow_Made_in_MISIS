@@ -8,7 +8,7 @@ bot_router = APIRouter(
 )
 
 
-@bot_router.post("", description="Использовать для загрузки настроек Бота")
+@bot_router.post("", description="Использовать для создания Бота")
 async def register_bot(user_id: str, bot_settings: BotSettings):
 
     bot = await create_bot(user_id, bot_settings)
