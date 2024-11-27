@@ -3,7 +3,8 @@ networks:
 
 volumes:
   # pgdata: # Define the pgdata volume here
-  postgres-data:
+  # postgres-data:
+  pgdata:
 
 services:
   nginx:
@@ -37,7 +38,8 @@ services:
     restart: unless-stopped
     volumes:
       # - ./database/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-      - postgres-data:/var/lib/postgresql/data
+      # - postgres-data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     ports:
       # - ${POSTGRES_PORT}:5432
       - 5432:5432
