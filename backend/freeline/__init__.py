@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from freeline.routers.test import test_router
 from freeline.routers.files import file_router
+from freeline.routers.chat_bot import bot_router
 # from . import db, routers, config
 
 
@@ -30,5 +31,6 @@ def create_app() -> FastAPI:
 
     _app.include_router(test_router)
     _app.include_router(file_router)
+    _app.include_router(bot_router)
 
     return _app
