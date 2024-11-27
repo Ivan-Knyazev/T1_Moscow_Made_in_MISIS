@@ -1,8 +1,9 @@
 networks:
   dev:
 
-# volumes:
-#   pgdata: # Define the pgdata volume here
+volumes:
+  # pgdata: # Define the pgdata volume here
+  postgres-data:
 
 services:
   nginx:
