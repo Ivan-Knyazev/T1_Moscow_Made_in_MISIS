@@ -1,0 +1,51 @@
+networks:
+  dev:
+
+volumes:
+  pgdata:  # Define the pgdata volume here
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+      - "/etc/letsencrypt:/etc/letsencrypt"
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - dev
+
+  backend:
+    build:
+      context: ./backend
+    networks:
+      - dev
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "YOUR_DB_URL"
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./frontend
+    networks:
+      - dev
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: YOUR_USER
+      POSTGRES_PASSWORD: YOUR_PASSWORD
+      POSTGRES_DB: YOUR_DB_NAME
+    ports:
+      - "5432:5432"
+    networks:
+      - dev
