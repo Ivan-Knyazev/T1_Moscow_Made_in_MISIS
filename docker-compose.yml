@@ -1,0 +1,85 @@
+networks:
+  dev:
+
+volumes:
+  # pgdata: # Define the pgdata volume here
+  # postgres-data:
+  pgdata:
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+      - "/etc/letsencrypt:/etc/letsencrypt"
+    depends_on:
+      # - backend
+      - frontend
+    networks:
+      - dev
+
+  postgresql:
+    container_name: freelinedb
+    image: 'postgres:15'
+    # env_file:
+      # - .env
+    environment:
+      # POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_DB: freeline
+      # POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_USER: su
+      # POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: 2xx6cM8zYP
+      TZ: 'GMT+3'
+      PGTZ: 'GMT+3'
+    restart: unless-stopped
+    volumes:
+      # - ./database/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      # - postgres-data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      # - ${POSTGRES_PORT}:5432
+      - 5432:5432
+    healthcheck:
+      # test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      test: [ "CMD-SHELL", "pg_isready -U su -d freeline" ]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - dev
+
+  # backend:
+  #   build:
+  #     context: ./backend
+  #   networks:
+  #     - dev
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     DATABASE_URL: "YOUR_DB_URL"
+  #   ports:
+  #     - "3000:3000"
+
+  frontend:
+    build:
+      context: ./frontend
+    networks:
+      - dev
+
+  # db:
+  #   image: postgres:15-alpine
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_USER: YOUR_USER
+  #     POSTGRES_PASSWORD: YOUR_PASSWORD
+  #     POSTGRES_DB: YOUR_DB_NAME
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - dev
