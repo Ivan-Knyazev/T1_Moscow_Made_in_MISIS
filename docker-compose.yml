@@ -16,8 +16,9 @@ services:  # Секция сервисов
       - dev
 
   frontend:
-    build:
-      context: ./t1_help_bot
+    image: ivanknyazev/t1-hack-frontend:0.2
+    #build:
+    #  context: ./t1_help_bot
     networks:
       - dev
 
