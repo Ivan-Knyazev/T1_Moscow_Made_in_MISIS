@@ -1,6 +1,6 @@
 import os
 from sentence_transformers import SentenceTransformer, util
-import model
+import app.internal.ml.model as model
 
 
 class Rag_fusion:
@@ -27,6 +27,18 @@ class Rag_fusion:
 
         # Select top_k queries based on the highest scoring document for each query
         best_queries = sorted(scored_queries, key=lambda x: x[0][1] if x else -float('inf'), reverse=True)[:top_k]  # handle empty list
+
+        top_docs = []
+        for query_scores in best_queries:
+            top_docs.extend([doc for doc, score in query_scores])
+
+        context = " ".join(top_docs)
+        final_answer = model(f"Используя предоставленный контекст: {context}, ответь на запрос: {self.query}")
+
+        return final_answer
+
+    def generate_with_arr(self, model, arr_data, top_k=4):
+        best_queries = sorted(arr_data, key=lambda x: x[0][1] if x else -float('inf'), reverse=True)[:top_k]  # handle empty list
 
         top_docs = []
         for query_scores in best_queries:

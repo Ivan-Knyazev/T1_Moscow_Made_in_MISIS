@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from ml_app.configuration.server import Server
+from app.configuration.server import Server
 
 
 def create_app(_=None) -> FastAPI:
