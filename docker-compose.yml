@@ -17,7 +17,7 @@ services:  # Секция сервисов
 
   frontend:
     build:
-      context: ./frontend
+      context: ./t1_help_bot
     networks:
       - dev
 
