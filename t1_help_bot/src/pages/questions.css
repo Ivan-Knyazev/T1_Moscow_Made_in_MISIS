@@ -1,0 +1,177 @@
+.wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.block {
+    padding: 20px 24px 32px;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    color: rgba(0,0,0, 1);
+    font-size: 36px;
+    /* mix-blend-mode: difference; */
+}
+
+button {
+    background-color: rgba(104, 192, 208, 1);
+    border-radius:  8px;
+    height: 78px;
+    color: rgba(249, 249, 249, 1);
+    font-size: 24px;
+    font-weight: 700;
+    border: none;
+}
+
+label {
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    width: 100%;
+}
+
+textarea {
+    max-height: 100px;
+    height: 20vh;
+    background-color: rgba(232, 232, 232, 1);
+    padding: 9px 7px;
+    border: none;
+}
+
+input, input:hover, input:focus, select {
+    border: none;
+    outline: none;
+    background-color: rgba(232, 232, 232, 1);
+    padding: 9px 7px;
+    border: none;
+}
+
+button:hover {
+    border: none;
+}
+
+.second-flex {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+}
+
+.third-flex {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.forth-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.res-input {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* ============================= bot */
+.bot {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 30%;
+    position: relative;
+}
+
+.bot-header {
+    /* height: 48px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 15px;
+    min-height: 48px;
+    box-sizing: border-box;
+}
+
+.bot-header > h2 {
+    margin: 0;
+    font-size: 24px;
+    line-height: normal;
+}
+
+.bot-body {
+    height: calc(50vh - 48px);
+    padding: 19px 15px;
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.someone-message, .own-message {
+    padding: 4px 12px;
+    text-align: left;
+    text-overflow: clip;
+    margin-bottom:  8px;
+    max-width: 60%;
+    width:fit-content;
+}
+
+.someone-message {
+    background-color: rgba(232, 232, 232, 1);
+}
+
+.own-message {
+    background-color: rgba(137, 219, 234, 1);
+    align-self: flex-end;
+}
+
+.bot-input {
+    position: absolute;
+    bottom: 19px;
+    left: 15px;
+    width: calc(100% - 60px);
+}
+
+.color-picker {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.color-square {
+    height: 40px;
+    width: 40px;
+
+}
+
+.color-square.selected {
+    border-radius: 1px solid blue;
+}
+
+.fifth-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fifth-flex > .bot {
+    width: 40vh !important;
+    height: 90vh;
+    margin-top: calc(80px + 24px);
+}
