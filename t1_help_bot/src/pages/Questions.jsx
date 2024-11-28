@@ -247,12 +247,12 @@ const Questions = ({state, setState}) => {
                         </label>
 
                         <label>NOTION_TOKEN
-                            <Tooltip
+                            {/* <Tooltip
                             placement="bottom"
                             title="Hello!"
                             >
                             <p>ad</p>
-                            </Tooltip>
+                            </Tooltip> */}
                         <input type="text"
                         onChange={(e) => setState(
                             prev => ({...state,
