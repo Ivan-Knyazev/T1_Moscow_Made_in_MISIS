@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# Free Line
+## Решение задачи "Окно знаний: цифровой ассистент базы знаний" от компании T1 на хакатоне "Импульс Т1" от команды *СДЕЛАНО В МИСИС*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание
 
-Currently, two official plugins are available:
+**Large Images** — это проект, предназначенный для разработки пользователями окна взаимодействия с цифровым ассистентом, интегрируя собственные базы знаний.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Функциональность
 
-## Expanding the ESLint configuration
+- **Интуитивный интерфейс**: простой и понятный сайт, работать с которым может и человек без особоых навыков
+- **Поддержка разных типов**: возможность загрузить базу знаний формата docx, txt, pdf, импорт из Notion
+- **Возможность кастомизации**: установка собственных шрифтов и цветов
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Установка
 
-- Configure the top-level `parserOptions` property like this:
+1. **Клонируйте репозиторий**:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   ```bash
+   git clone -b dev https://github.com/JateSatis/large_images.git
+   cd large_images
+2. **Запустите docker контейнер**:
+   ```bash
+   docker compose up -d --build
+Теперь наше решение доступно по *http://localhost:8080*
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Технологии и стек
+- **Frontend**: TS, React, scss, vite
+- **Backend**: python, FastAPI, Postgresql, s3, MinIO
+- **ML**: pytorch, transformers, huggingface, langchain, ragfusion
+- **Others**: docker, nginx, docker-compose, RabbitMQ
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Команда
+- **Беспалов Вениамин**: Backend, Devops. Студент 2 курса Университета МИСИС
+- **Князев Иван**: Backend. Студент 2 курса Университета МИСИС
+- **Чашин Михаил**: ML. Студент 2 курса Университета МИСИС
+- **Лисовская Анастасия**: Frontend. Студент 2 курса Университета МИСИС
+- **Иванова Ксения**: Дизайнер. Студент 2 курса Университета МИСИС
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Архитектура
+<img width="1069" alt="image" src="https://github.com/user-attachments/assets/22bc0810-d2b7-4ee6-8cd2-8bb3d53fee78" />
+
+
+## Презентация решения
+https://drive.google.com/file/d/15JBYkkhGy-LZjQ2P1IhaX5jXpC8twf81/view?usp=drive_link
